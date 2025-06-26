@@ -6,8 +6,4 @@ return {
     --     -- end
     -- },
     { "someguy0555/snake.nvim" },
-    {
-        lazy = false,
-        dir="C:\\Users\\msjon\\Home\\Code\\Lua\\nvim-plugins\\vu-schedule-ui"
-    }
 }
