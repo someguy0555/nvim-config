@@ -5,7 +5,7 @@ return {
         ---@type oil.SetupOpts
         opts = {},
         -- Optional dependencies
-        dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
         -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
         -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
         lazy = false,
@@ -69,4 +69,29 @@ return {
             vim.keymap.set('n', '-', ':Oil<CR>', {silent = true})
         end,
     },
+    -- {
+    --     "X3eRo0/dired.nvim",
+    --     lock = true,
+    --     update = false,
+    --     dependencies = { 'MunifTanjim/nui.nvim' },
+    --     config = function()
+    --     require("dired").setup {
+    --         path_separator = "/",
+    --         show_banner = false,
+    --         show_icons = true,
+    --         show_hidden = true,
+    --         show_dot_dirs = true,
+    --         show_colors = true,
+    --
+    --         keybinds = {
+    --             dired_enter = "<cr>",
+    --             dired_back = "-",
+    --             dired_up = "_",
+    --             dired_rename = "R",
+    --             -- ... (add more keybindings as needed)
+    --             dired_quit = "q",
+    --         },
+    --     }
+    --     end,
+    -- },
 }

@@ -9,12 +9,6 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', {silent = true})
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', {silent = true})
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', {silent = true})
 
--- Window resizing
--- vim.keymap.set('n', '-', '<C-w>-', {silent = true})
--- vim.keymap.set('n', '_', '<C-w>+', {silent = true})
--- vim.keymap.set('n', '=', '<C-w><', {silent = true})
--- vim.keymap.set('n', '+', '<C-w>>', {silent = true})
-
 -- Remove highlighting 
 vim.keymap.set('n', '<Space><Space>', ':nohl <CR>', {silent = true})
 

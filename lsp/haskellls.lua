@@ -4,14 +4,14 @@
 --   root_markers = {'.hs.json', '.hs.jsonc', '.hi.json', '.hi.json'},
 -- }
 
-return {
-    cmd = { "haskell-language-server-wrapper", "--lsp" },    -- Default HLS command
-    filetypes = { "haskell", "lhaskell" },                                 -- Default filetypes for HLS
-    root_dir = require('lspconfig').util.root_pattern('.git', 'stack.yaml', 'cabal.project'), -- Auto-detection of project root
-    settings = {
-        haskell = {
-            cabalFormattingProvider = "cabalfmt",    -- Use cabalfmt for formatting Cabal files
-            formattingProvider = "ormolu",                 -- Use ormolu for formatting Haskell files
-        }
-    }
-}
+-- return {
+--     cmd = { "haskell-language-server-wrapper", "--lsp" },    -- Default HLS command
+--     filetypes = { "haskell", "lhaskell" },                                 -- Default filetypes for HLS
+--     root_dir = require('lspconfig').util.root_pattern('.git', 'stack.yaml', 'cabal.project'), -- Auto-detection of project root
+--     settings = {
+--         haskell = {
+--             cabalFormattingProvider = "cabalfmt",    -- Use cabalfmt for formatting Cabal files
+--             formattingProvider = "ormolu",                 -- Use ormolu for formatting Haskell files
+--         }
+--     }
+-- }
