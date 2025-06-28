@@ -10,6 +10,7 @@ return {
     config = function()
         require("telescope").setup({
             defaults = {
+                border = false,
                 mappings = {
                     i = {
                         ["<C-c>"] = require("telescope.actions").close,  -- Close in insert mode

@@ -7,64 +7,6 @@ return {
             "neovim/nvim-lspconfig",
         },
     },
-    -- {
-    --     "hrsh7th/nvim-cmp",
-    --     event = "InsertEnter",
-    --     dependencies = {
-    --         "hrsh7th/cmp-nvim-lsp",
-    --         "hrsh7th/cmp-buffer",
-    --         "hrsh7th/cmp-path",
-    --         "hrsh7th/cmp-cmdline",
-    --         "hrsh7th/cmp-nvim-lsp-signature-help",
-    --     },
-    --     config = function()
-    --         local cmp = require("cmp")
-    --         cmp.setup({
-    --             -- your cmp setup goes here
-    --             snippet = {
-    --                   -- REQUIRED - you must specify a snippet engine
-    --                   expand = function(args)
-    --                     -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-    --                     -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-    --                     -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-    --                     -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-    --                     vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-    --
-    --                     -- For `mini.snippets` users:
-    --                     -- local insert = MiniSnippets.config.expand.insert or MiniSnippets.default_insert
-    --                     -- insert({ body = args.body }) -- Insert at cursor
-    --                     -- cmp.resubscribe({ "TextChangedI", "TextChangedP" })
-    --                     -- require("cmp.config").set_onetime({ sources = {} })
-    --                   end,
-    --             },
-    --             window = {},
-    --             mapping = cmp.mapping.preset.insert({
-    --                 ['<C-j>'] = cmp.mapping.select_next_item(),
-    --                 ['<C-k>'] = cmp.mapping.select_prev_item(),
-    --                 ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- scroll up
-    --                 ['<C-d>'] = cmp.mapping.scroll_docs(4),  -- scroll down
-    --                 ['<C-Space>'] = cmp.mapping.complete(),
-    --                 ['<C-e>'] = cmp.mapping.abort(),
-    --                 ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    --             }),
-    --             sources = cmp.config.sources({
-    --                     { name = 'nvim_lsp' },
-    --                     { name = 'nvim_lsp_signature_help' },
-    --                     -- { name = 'vsnip' }, -- For vsnip users.
-    --                     -- { name = 'luasnip' }, -- For luasnip users.
-    --                     -- { name = 'ultisnips' }, -- For ultisnips users.
-    --                     -- { name = 'snippy' }, -- For snippy users.
-    --                 },
-    --                 {
-    --                   { name = 'buffer' },
-    --                 }
-    --             ),
-    --             experimental = {
-    --                 ghost_text = true,
-    --             },
-    --         })
-    --     end,
-    -- },
     {
         'saghen/blink.cmp',
         -- optional: provides snippets for the snippet source
@@ -92,7 +34,28 @@ return {
             -- C-k: Toggle signature help (if signature.enabled = true)
             --
             -- See :h blink-cmp-config-keymap for defining your own keymap
-            keymap = { preset = 'default' },
+            keymap = {
+                preset = 'default',
+                ['<C-l>'] = { 'accept', 'fallback' },
+
+                ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+                ['<C-h>'] = { 'hide' },
+                -- ['<C-y>'] = { 'select_and_accept' },
+
+                ['<C-k>'] = { 'select_prev', 'fallback' },
+                ['<C-j>'] = { 'select_next', 'fallback' },
+                -- ['<C-p>'] = { 'select_prev', 'fallback_to_mappings' },
+                -- ['<C-n>'] = { 'select_next', 'fallback_to_mappings' },
+
+                ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+                ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+
+                ['<Tab>'] = { 'snippet_forward', 'fallback' },
+                ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+                ['<C-e>'] = { 'show_signature', 'hide_signature', 'fallback' },
+            },
+
+            signature = { enabled = true },
 
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
@@ -101,7 +64,20 @@ return {
             },
 
             -- (Default) Only show the documentation popup when manually triggered
-            completion = { documentation = { auto_show = false } },
+            completion = {
+                accept = {
+                    auto_brackets = {
+                        enabled = false,
+                    },
+                },
+                documentation = {
+                    auto_show = true,
+                    auto_show_delay_ms = 0,
+                },
+                ghost_text = {
+                    enabled = true,
+                },
+            },
 
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`

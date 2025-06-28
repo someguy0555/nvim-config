@@ -31,9 +31,13 @@ vim.opt.backupdir = "C:\\WINDOWS\\Temp"
 vim.opt.backupskip = "C:\\WINDOWS\\Temp\\*"
 vim.opt.directory = "C:\\WINDOWS\\Temp"
 vim.opt.writebackup = true
+
 -- Misc
 vim.opt.incsearch = true
 vim.opt.wrap = false
+
+-- Appearance
+vim.o.winborder = "single"
 
 -- NO. FUCKING. SHADA!!
 -- vim.opt.shadafile = "NONE"
