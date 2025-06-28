@@ -46,4 +46,7 @@ vim.api.nvim_create_autocmd('Filetype', {
     group = comment_augroup
 })
 
+-- Swap
+vim.opt.swapfile = false
+
 -- vim.api.nvim_create_user_command('Pbuff', 'e "C:\\Users\\msjon\\.pbuff.md"', {})

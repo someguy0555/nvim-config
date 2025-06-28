@@ -1,15 +1,15 @@
-vim.opt.completeopt = { "menuone", "noselect", "popup" }
-
-local lsps = { -- Don't forget to add config in "./lsp/<server_name>.lua"!
-    "luals",
-    "clangd",
-    -- "haskellls",
-    -- "pyright",
-}
-
-for _, lsp in pairs(lsps) do
-    vim.lsp.enable(lsp)
-end
+-- vim.opt.completeopt = { "menuone", "noselect", "popup" }
+--
+-- local lsps = { -- Don't forget to add config in "./lsp/<server_name>.lua"!
+--     "luals",
+--     "clangd",
+--     -- "haskellls",
+--     "pyright",
+-- }
+--
+-- for _, lsp in pairs(lsps) do
+--     vim.lsp.enable(lsp)
+-- end
 
 -- for _, lsp in pairs(lsps) do
 --     -- local setup = {}
