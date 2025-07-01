@@ -10,7 +10,7 @@ return {
                 bold = true,
                 invert_selection = true,
                 contrast = "", -- Example: Customize the color scheme
-                transparent_mode = false,
+                transparent_mode = true,
             })
             vim.cmd.colorscheme("gruvbox")
         end,
@@ -63,30 +63,13 @@ return {
             }
         end
     },
-    -- { "nvim-tree/nvim-web-devicons", opts = {} },
     -- {
-    --     "rose-pine/neovim",
-    --     name = "rose-pine",
+    --     "VonHeikemen/fine-cmdline.nvim",
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --     },
     --     config = function()
-    --         require("rose-pine").setup({
-    --             variant = "moon", -- auto, main, moon, or dawn
-    --             dark_variant = "moon", -- main, moon, or dawn
-    --
-    --             styles = {
-    --                 bold = true,
-    --                 italic = true,
-    --                 transparency = true,
-    --             },
-    --
-    --             highlight_groups = {
-    --                 Visual = {fg = "#ffc0cb" },
-    --                 VisualNOS = {fg = "#ffc0cb" },
-    --                 Search = {fg = "#ffc0cb" },
-    --                 IncSearch = {fg = "#ffc0cb" },
-    --                 CursorLine = {fg = "#ffc0cb" },
-    --             },
-    --         })
-    --         vim.cmd.colorscheme("rose-pine")
+    --         vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', {noremap = true})
     --     end
     -- },
 }

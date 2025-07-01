@@ -22,8 +22,10 @@ vim.keymap.set('n', '<C-b>', ':tabnew<CR>', {silent = true}) -- Execute external
 -- Lsp
 vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {desc = "Rename Symbol"})
 
--- Show diagnostics
+-- Diagnostic
 vim.keymap.set("n", "<C-k>", function() vim.diagnostic.open_float() end, { desc = "Diagnostic float" })
+vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 
 -- Go to previous/next diagnostic
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
