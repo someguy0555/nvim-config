@@ -9,4 +9,3 @@ vim.keymap.set("n", "<C-i>", "<C-i>zz", {silent = true})
 -- Keep shift visual line mode after shift. 
 vim.keymap.set("v", ">", ">gv", {silent = true})
 vim.keymap.set("v", "<", "<gv", {silent = true})
-

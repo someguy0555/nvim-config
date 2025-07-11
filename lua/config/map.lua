@@ -27,10 +27,6 @@ vim.keymap.set("n", "<C-k>", function() vim.diagnostic.open_float() end, { desc 
 vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
 vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
 
--- Go to previous/next diagnostic
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
-
 -- Command mode
 -- vim.keymap.set('n', ':', ':<C-f>i', { desc = "Open command screen" })
 -- vim.keymap.set('n', '!', ':<C-f>i!', {}) -- Execute external command.
@@ -39,7 +35,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnos
 vim.keymap.set('n', '<leader>p', ":e C:\\Users\\msjon\\.pbuff.md <CR>", {silent = true})
 
 -- Normal mode
--- vim.keymap.set('n', '<CR>', 'o<Esc>', { silent = true })
+vim.keymap.set('n', '<CR>', 'o<Esc>', { silent = true })
 
 -- Tmp
 -- vim.keymap.set('n', '<C-h>', '<leader>p:9<CR>0gfG<CR>`', {})

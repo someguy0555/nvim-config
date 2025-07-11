@@ -1,9 +1,10 @@
 -- This HAS to be here, otherwise it doesn't work.
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = "●",
-    source = "if_many",
-  },
+    virtual_lines = false,
+  -- virtual_text = {
+  --   prefix = "●",
+  --   source = "if_many",
+  -- },
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",

@@ -36,10 +36,10 @@ return {
             -- See :h blink-cmp-config-keymap for defining your own keymap
             keymap = {
                 preset = 'default',
+                ['<C-h>'] = { 'hide' },
                 ['<C-l>'] = { 'accept', 'fallback' },
 
                 ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-                ['<C-h>'] = { 'hide' },
                 -- ['<C-y>'] = { 'select_and_accept' },
 
                 ['<C-k>'] = { 'select_prev', 'fallback' },
@@ -55,7 +55,12 @@ return {
                 ['<C-e>'] = { 'show_signature', 'hide_signature', 'fallback' },
             },
 
-            signature = { enabled = true },
+            signature = {
+                enabled = true,
+                window = {
+                    show_documentation = false,
+                },
+            },
 
             appearance = {
                 -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
