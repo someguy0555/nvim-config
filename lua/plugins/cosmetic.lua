@@ -9,7 +9,7 @@ return {
                 underline = true,
                 bold = true,
                 invert_selection = true,
-                contrast = "", -- Example: Customize the color scheme
+                contrast = "soft", -- can be "hard", "soft" or empty string
                 transparent_mode = true,
             })
             vim.cmd.colorscheme("gruvbox")

@@ -1,8 +1,8 @@
 -- Setting usable shell
-vim.o.shell="powershell.exe"
-vim.o.shellcmdflag="-command"
+-- vim.o.shell="powershell.exe"
+-- vim.o.shellcmdflag="-command"
 -- vim.o.shellquote="\""
-vim.o.shellxquote=""
+-- vim.o.shellxquote="" 
 
 -- Numbers
 vim.opt.number = true
@@ -25,12 +25,22 @@ vim.opt.softtabstop = 8
 --   autocmd FileType * setlocal smarttab expandtab shiftwidth=4 tabstop=4 softtabstop=4
 -- ]])
 
--- Backup
+-- Set up cache directories
+local cache = vim.fn.expand(".temp/nvim")
+if vim.fn.isdirectory(cache) == 0 then
+  vim.fn.mkdir(cache, "p")
+end
+
+-- Backup settings
 vim.opt.backup = true
-vim.opt.backupdir = "C:\\WINDOWS\\Temp"
-vim.opt.backupskip = "C:\\WINDOWS\\Temp\\*"
-vim.opt.directory = "C:\\WINDOWS\\Temp"
 vim.opt.writebackup = true
+vim.opt.backupdir = {cache .. "//"}    -- '//' ensures unique filenames
+vim.opt.backupskip = {}               -- no default skip; everything is backed by default
+
+-- Swap and undo (optional)
+vim.opt.directory = {cache .. "//"}   -- swap files go here
+vim.opt.undodir = {cache .. "//"}     -- persistent undo files
+vim.opt.undofile = true
 
 -- Misc
 vim.opt.incsearch = true
