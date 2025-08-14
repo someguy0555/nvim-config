@@ -1,6 +1,0 @@
-require("config.diagnostic")
--- require("config.lsp")
-require("config.lazy")
-require("config.general")
-require("config.map")
-require("config.remap")
