@@ -1,18 +1,17 @@
 vim.g.mapleader = " "
 
-local opt = vim.o
-opt.number = true
-opt.relativenumber = true
-opt.tabstop = 4
-opt.shiftwidth = 4
-opt.wrap = false
-opt.swapfile = false
-opt.undofile = true
-opt.winborder = "rounded"
-opt.signcolumn = "yes"
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartindent = true
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.wrap = false
+vim.o.swapfile = false
+vim.o.undofile = true
+vim.o.winborder = "rounded"
+vim.o.signcolumn = "yes"
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.smartindent = true
 
 local map = vim.keymap.set
 -- Map
@@ -49,17 +48,13 @@ vim.api.nvim_create_autocmd('Filetype', {
 
 vim.lsp.enable({ 'lua_ls' })
 
--- Plugins
 vim.pack.add({
 	{ src = 'https://github.com/ellisonleao/gruvbox.nvim' },
-	-- { src = 'https://github.com/xero/evangelion.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 	{ src = 'https://github.com/BurntSushi/ripgrep' },
-	-- { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
 	{ src = 'https://github.com/mason-org/mason.nvim' },
-	-- { src = 'https://github.com/L3MON4D3/LuaSnip' },
 	{ src = 'https://github.com/Saghen/blink.cmp' },
 	-- { src = 'https://github.com/nvim-neotest/nvim-nio' },
 	-- { src = 'https://github.com/mfussenegger/nvim-dap' },
@@ -67,25 +62,23 @@ vim.pack.add({
 	-- { src = 'https://github.com/Weissle/persistent-breakpoints.nvim' },
 })
 
-require("gruvbox").setup({ invert_selecton = true })
+require("gruvbox").setup({ invert_selection = true })
 vim.cmd("colorscheme gruvbox")
--- require("evangelion").setup()
--- vim.cmd("colorscheme evangelion")
 -- vim.cmd(":hi statusline guibg=NONE")
 
 require("mason").setup()
 require("telescope").setup({
 	defaults = {
 		border = true,
-		-- previewer = true,
-		i = {
-			-- ["<C-c>"] = require("telescope.actions").close,  -- Close in insert mode
-			["<C-j>"] = require("telescope.actions").move_selection_next,
-			["<C-k>"] = require("telescope.actions").move_selection_previous,
-		},
-		n = {
-			["<j>"] = require("telescope.actions").move_selection_next,
-			["<k>"] = require("telescope.actions").move_selection_previous,
+		mappings = {
+			i = {
+				["<C-j>"] = require("telescope.actions").move_selection_next,
+				["<C-k>"] = require("telescope.actions").move_selection_previous,
+			},
+			n = {
+				["<j>"] = require("telescope.actions").move_selection_next,
+				["<k>"] = require("telescope.actions").move_selection_previous,
+			},
 		},
 	},
 })
