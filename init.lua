@@ -28,6 +28,7 @@ map('n', '<C-k>', ':wincmd k<CR>', { silent = true })
 map('n', '<C-j>', ':wincmd j<CR>', { silent = true })
 map('n', '<C-h>', ':wincmd h<CR>', { silent = true })
 map('n', '<C-l>', ':wincmd l<CR>', { silent = true })
+map('t', '<C-n>', '<C-\\><C-n>')
 map("n", "<C-t>", vim.diagnostic.open_float)
 map("n", "]g", vim.diagnostic.goto_next)
 map("n", "[g", vim.diagnostic.goto_prev)
@@ -51,23 +52,32 @@ vim.lsp.enable({ 'lua_ls' })
 -- Plugins
 vim.pack.add({
 	{ src = 'https://github.com/ellisonleao/gruvbox.nvim' },
+	-- { src = 'https://github.com/xero/evangelion.nvim' },
 	{ src = 'https://github.com/stevearc/oil.nvim' },
 	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 	{ src = 'https://github.com/BurntSushi/ripgrep' },
+	-- { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
 	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
 	{ src = 'https://github.com/mason-org/mason.nvim' },
-	{ src = 'https://github.com/Saghen/blink.cmp' },
 	-- { src = 'https://github.com/L3MON4D3/LuaSnip' },
+	{ src = 'https://github.com/Saghen/blink.cmp' },
+	-- { src = 'https://github.com/nvim-neotest/nvim-nio' },
+	-- { src = 'https://github.com/mfussenegger/nvim-dap' },
+	-- { src = 'https://github.com/rcarriga/nvim-dap-ui' },
+	-- { src = 'https://github.com/Weissle/persistent-breakpoints.nvim' },
 })
 
 require("gruvbox").setup({ invert_selecton = true })
 vim.cmd("colorscheme gruvbox")
+-- require("evangelion").setup()
+-- vim.cmd("colorscheme evangelion")
 -- vim.cmd(":hi statusline guibg=NONE")
 
 require("mason").setup()
 require("telescope").setup({
 	defaults = {
 		border = true,
+		-- previewer = true,
 		i = {
 			-- ["<C-c>"] = require("telescope.actions").close,  -- Close in insert mode
 			["<C-j>"] = require("telescope.actions").move_selection_next,
@@ -113,7 +123,6 @@ require("oil").setup({
 	view_options = {
 		show_hidden = true,
 	},
-	preview_split = "right",
 })
 map('n', '-', ':Oil<CR>', { silent = true })
 
@@ -165,3 +174,49 @@ require("blink.cmp").setup({
 	-- fuzzy = { implementation = "prefer_rust_with_warning" },
 	fuzzy = { implementation = "lua" },
 })
+
+-- local dap = require("dap")
+-- local dapui = require("dapui")
+-- dapui.setup()
+--
+-- dap.listeners.before.attach.dapui_config = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.launch.dapui_config = function()
+--   dapui.open()
+-- end
+-- dap.listeners.before.event_terminated.dapui_config = function()
+--   dapui.close()
+-- end
+-- dap.listeners.before.event_exited.dapui_config = function()
+--   dapui.close()
+-- end
+-- -- vim.keymap.set('n', '<leader>bb', require('dap').toggle_breakpoint)
+-- vim.keymap.set('n', '<leader>bk', require('dap').continue)
+-- vim.keymap.set('n', '<leader>bl', require('dap').run_last)
+--
+-- dap.adapters["local-lua"] = {
+--   type = "executable",
+--   command = "node",
+--   args = {
+--     vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/extension/debugAdapter.js"),
+--   },
+-- }
+--
+-- dap.configurations.lua = {
+--   {
+--     name = "Launch current file debugging",
+--     type = 'local-lua',
+--     request = 'launch',
+--     cwd = '${workspaceFolder}',
+--     extensionPath = vim.fs.joinpath(vim.fn.stdpath("data"), "mason/share/local-lua-debugger-vscode/"),
+--     program = function()
+--       return {
+--         lua = "lua",
+--         file = vim.api.nvim_buf_get_name(0),
+--       }
+--     end,
+--     verbose = true,
+--     args = {},
+--   },
+-- }
