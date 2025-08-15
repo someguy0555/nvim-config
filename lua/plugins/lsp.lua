@@ -1,5 +1,9 @@
 return {
 	{
+		"mason-org/mason.nvim",
+		opts = {}
+	},
+	{
 		'saghen/blink.cmp',
 		dependencies = { 'rafamadriz/friendly-snippets' },
 		version = '1.*',
