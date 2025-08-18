@@ -45,6 +45,30 @@ map('n', '<C-u>', '<C-u>zz', { silent = true })
 map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = "●",
+    source = "if_many",
+  },
+  -- signs = {
+  --   text = {
+  --     [vim.diagnostic.severity.ERROR] = "",
+  --     [vim.diagnostic.severity.WARN]  = "",
+  --     [vim.diagnostic.severity.HINT]  = "",
+  --     [vim.diagnostic.severity.INFO]  = "",
+  --   },
+  -- },
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = {
+    -- source = "always",
+    border = "rounded",
+  },
+})
+
+vim.o.signcolumn = "yes"
+
 vim.api.nvim_create_autocmd('Filetype', {
     pattern = { 'c', 'cpp', 'h', 'hpp' },
     callback = function()
