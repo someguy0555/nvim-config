@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			'BurntSushi/ripgrep',
+			-- 'sharkdp/fd',
 			-- "debugloop/telescope-undo.nvim",
 		},
 		config = function()
@@ -28,6 +29,9 @@ return {
 			vim.keymap.set('n', '<leader>g', builtin.live_grep, { desc = 'Telescope live grep' })
 			vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Telescope buffers' })
 			vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Telescope help tags' })
+
+			-- LSP
+			vim.keymap.set('n', '<leader>lw', builtin.lsp_dynamic_workspace_symbols, { desc = 'Telescope help tags' })
 
 			-- require("telescope").load_extension("undo")
 			-- vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")

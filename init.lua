@@ -1,7 +1,9 @@
 vim.g.mapleader = " "
 
+vim.o.termguicolors = true
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.expandtab = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.wrap = false
@@ -18,64 +20,72 @@ local map = vim.keymap.set
 map('n', '<leader>o', ':update<CR>:source<CR>')
 map('n', '<leader>w', ':write<CR>')
 map('n', '<leader>q', ':quit<CR>')
-map('n', '<leader>lf', vim.lsp.buf.format)
 map({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 map({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
-map("n", "<leader>lr", vim.lsp.buf.rename)
 map('n', '<leader><leader>', ':nohlsearch<CR>')
+map('n', '<leader>lf', vim.lsp.buf.format)
+map("n", "<leader>lr", vim.lsp.buf.rename)
+map('n', '<leader>ld', vim.lsp.buf.definition)
+map('n', '<leader>li', vim.lsp.buf.implementation)
+map('n', '<leader>ln', vim.lsp.buf.references)
+map('n', '<leader>la', vim.lsp.buf.code_action)
+map('n', '<leader>lh', vim.lsp.buf.hover)
 map('n', '<C-k>', ':wincmd k<CR>', { silent = true })
 map('n', '<C-j>', ':wincmd j<CR>', { silent = true })
 map('n', '<C-h>', ':wincmd h<CR>', { silent = true })
 map('n', '<C-l>', ':wincmd l<CR>', { silent = true })
 map('t', '<C-n>', '<C-\\><C-n>')
-map("n", "<C-t>", vim.diagnostic.open_float)
-map("n", "]g", vim.diagnostic.goto_next)
-map("n", "[g", vim.diagnostic.goto_prev)
+map("n", "<C-;>", vim.diagnostic.open_float)
+-- map("n", "]d", vim.diagnostic.goto_next) -- Already exists
+-- map("n", "[d", vim.diagnostic.goto_prev) -- Already exists
 
 -- Remap
-local map = vim.keymap.set
-
 map('n', '<C-d>', '<C-d>zz', { silent = true })
 map('n', '<C-u>', '<C-u>zz', { silent = true })
 map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 
 vim.api.nvim_create_autocmd('Filetype', {
-	pattern = { 'c', 'cpp', 'h', 'hpp' }, -- Add all relevant patterns
-	callback = function()
-		vim.bo.commentstring = '//%s'
-	end,
-	group = comment_augroup
+    pattern = { 'c', 'cpp', 'h', 'hpp' },
+    callback = function()
+        vim.bo.commentstring = '//%s'
+    end,
+    group = comment_augroup
 })
 
-vim.lsp.enable({ 'lua_ls', 'clangd' })
+-- vim.lsp.enable({ 'lua_ls', 'clangd' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp' })
+-- vim.lsp.enable({ 'lua_ls', 'clangd', 'hls' })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out,                            "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
-	spec = {
-		{ import = "plugins" },
-	},
-	ui = { border = "single", },
-	checker = {
-		enabled = false,
-		notify = false,
-	},
+    defaults = {
+        version = '*',
+    },
+    spec = {
+        { import = "plugins" },
+    },
+    ui = { border = "single", },
+    install = { colorscheme = { "gruvbox" } },
+    checker = {
+        notify = false,
+    },
 })
 
 -- -- local dap = require("dap")
