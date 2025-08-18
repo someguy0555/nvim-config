@@ -6,7 +6,10 @@ return {
     { 'neovim/nvim-lspconfig' },
     {
         'saghen/blink.cmp',
-        dependencies = { 'rafamadriz/friendly-snippets' },
+        dependencies = {
+            'rafamadriz/friendly-snippets',
+            'giuxtaposition/blink-cmp-copilot',
+        },
         version = '1.*',
         opts = {
             keymap = {
@@ -37,7 +40,7 @@ return {
             completion = {
                 accept = {
                     auto_brackets = {
-                        enabled = false,
+                        enabled = true,
                     },
                 },
                 documentation = {
@@ -47,18 +50,26 @@ return {
                 ghost_text = {
                     enabled = true,
                 },
+                menu = {
+                    auto_show = true,
+                    draw = { columns = { { "kind_icon", "kind", gap = 1 }, { "label", "label_description", gap = 1 }, } },
+                },
             },
             -- snippets = { preset = 'luasnip' },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
-                -- default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+                providers = {
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-cmp-copilot",
+                        score_offset = 100,
+                        async = true,
+                    },
+                },
             },
             fuzzy = { implementation = "prefer_rust_with_warning" },
             -- fuzzy = { implementation = "lua" },
         },
         opts_extend = { "sources.default" },
-        config = function()
-            require("blink.cmp").get_lsp_capabilities()
-        end,
     },
 }
