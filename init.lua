@@ -23,19 +23,25 @@ map('n', '<leader>q', ':quit<CR>')
 map({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 map({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
 map('n', '<leader><leader>', ':nohlsearch<CR>')
+map('n', '<leader>di', function () vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
+map('n', '<leader>dq', vim.diagnostic.setqflist)
+map('n', '<leader>dl', vim.diagnostic.setloclist)
+map('n', '<leader>lq', ':copen<CR>')
+map('n', '<leader>ll', ':lopen<CR>')
 map('n', '<leader>lf', vim.lsp.buf.format)
-map("n", "<leader>lr", vim.lsp.buf.rename)
+map("n", "<leader>ln", vim.lsp.buf.rename)
 map('n', '<leader>ld', vim.lsp.buf.definition)
 map('n', '<leader>li', vim.lsp.buf.implementation)
-map('n', '<leader>ln', vim.lsp.buf.references)
+map('n', '<leader>lr', vim.lsp.buf.references)
 map('n', '<leader>la', vim.lsp.buf.code_action)
 map('n', '<leader>lh', vim.lsp.buf.hover)
-map('n', '<C-k>', ':wincmd k<CR>', { silent = true })
-map('n', '<C-j>', ':wincmd j<CR>', { silent = true })
-map('n', '<C-h>', ':wincmd h<CR>', { silent = true })
-map('n', '<C-l>', ':wincmd l<CR>', { silent = true })
+map('n', '<C-k>', ':wincmd k<CR>')
+map('n', '<C-j>', ':wincmd j<CR>')
+map('n', '<C-h>', ':wincmd h<CR>')
+map('n', '<C-l>', ':wincmd l<CR>')
 map('t', '<C-n>', '<C-\\><C-n>')
-map("n", "<C-;>", vim.diagnostic.open_float)
+
+-- map("n", "<C-w>d", vim.diagnostic.open_float) -- Already exists
 -- map("n", "]d", vim.diagnostic.goto_next) -- Already exists
 -- map("n", "[d", vim.diagnostic.goto_prev) -- Already exists
 
@@ -46,25 +52,25 @@ map('v', '<', '<gv', { silent = true })
 map('v', '>', '>gv', { silent = true })
 
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = "●",
-    source = "if_many",
-  },
-  -- signs = {
-  --   text = {
-  --     [vim.diagnostic.severity.ERROR] = "",
-  --     [vim.diagnostic.severity.WARN]  = "",
-  --     [vim.diagnostic.severity.HINT]  = "",
-  --     [vim.diagnostic.severity.INFO]  = "",
-  --   },
-  -- },
-  underline = true,
-  update_in_insert = false,
-  severity_sort = true,
-  float = {
-    -- source = "always",
-    border = "rounded",
-  },
+    virtual_text = {
+        prefix = "●",
+        source = "if_many",
+    },
+    -- signs = {
+    --     text = {
+    --         [vim.diagnostic.severity.ERROR] = "",
+    --           [vim.diagnostic.severity.WARN]  = "",
+    --           [vim.diagnostic.severity.HINT]  = "",
+    --           [vim.diagnostic.severity.INFO]  = "",
+    --     },
+    -- },
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+        -- source = "always",
+        border = "rounded",
+    },
 })
 
 vim.o.signcolumn = "yes"
@@ -76,6 +82,9 @@ vim.api.nvim_create_autocmd('Filetype', {
     end,
     group = comment_augroup
 })
+
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"
 
 -- vim.lsp.enable({ 'lua_ls', 'clangd' })
 vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp' })
@@ -111,6 +120,8 @@ require("lazy").setup({
         notify = false,
     },
 })
+
+-- vim.cmd('colorscheme quiet')
 
 -- -- local dap = require("dap")
 -- -- local dapui = require("dapui")
