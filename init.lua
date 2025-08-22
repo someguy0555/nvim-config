@@ -42,6 +42,7 @@ map('n', '<C-j>', ':wincmd j<CR>')
 map('n', '<C-h>', ':wincmd h<CR>')
 map('n', '<C-l>', ':wincmd l<CR>')
 map('n', '<C-w>t', ':tabnew <CR>')
+map('n', '<C-w>c', ':tabclose <CR>')
 map('t', '<C-n>', '<C-\\><C-n>')
 
 -- Remap

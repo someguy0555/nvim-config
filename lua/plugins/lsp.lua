@@ -8,6 +8,7 @@ return {
         'saghen/blink.cmp',
         dependencies = {
             'rafamadriz/friendly-snippets',
+            'giuxtaposition/blink-cmp-copilot',
         },
         version = '1.*',
         opts = {
@@ -63,7 +64,15 @@ return {
             },
             -- snippets = { preset = 'luasnip' },
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+                providers = {
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-cmp-copilot",
+                        score_offset = 100,
+                        async = true,
+                    },
+                },
             },
         },
         opts_extend = { "sources.default" },
