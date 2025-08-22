@@ -27,9 +27,9 @@ map({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
 map('n', '<leader><leader>', ':nohlsearch<CR>')
 map('n', '<leader>di', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
 map('n', '<leader>dq', vim.diagnostic.setqflist)
-map('n', '<leader>dl', vim.diagnostic.setloclist)
+map('n', '<leader>dQ', vim.diagnostic.setloclist)
 map('n', '<leader>lq', ':copen<CR>')
-map('n', '<leader>ll', ':lopen<CR>')
+map('n', '<leader>lQ', ':lopen<CR>')
 map('n', '<leader>lf', vim.lsp.buf.format)
 map("n", "<leader>ln", vim.lsp.buf.rename)
 map('n', '<leader>ld', vim.lsp.buf.definition)
@@ -37,7 +37,6 @@ map('n', '<leader>li', vim.lsp.buf.implementation)
 map('n', '<leader>lr', vim.lsp.buf.references)
 map('n', '<leader>la', vim.lsp.buf.code_action)
 map('n', '<leader>lh', vim.lsp.buf.hover)
-map('n', '<leader>lt', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
 map('n', '<C-k>', ':wincmd k<CR>')
 map('n', '<C-j>', ':wincmd j<CR>')
 map('n', '<C-h>', ':wincmd h<CR>')
@@ -124,20 +123,6 @@ vim.api.nvim_create_autocmd('Filetype', {
     group = comment_augroup
 })
 
--- vim.api.nvim_create_autocmd("LspAttach", {
---     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
---     callback = function(args)
---         local client = vim.lsp.get_client_by_id(args.data.client_id)
---         if client == nil then return end
---         if client.server_capabilities.inlayHintProvider then
---             vim.lsp.inlay_hint.enable(true)
---         end
---         -- whatever other lsp config you want
---     end
--- })
---
--- vim.lsp.buf.inlay_hint(0, true)
--- vim.lsp.inlay_hint.enable(true)
 vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls' })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -168,6 +153,7 @@ require("lazy").setup({
     install = { colorscheme = { "gruvbox" } },
     checker = {
         notify = false,
+        enabled = false,
     },
 })
 

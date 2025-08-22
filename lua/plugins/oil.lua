@@ -14,7 +14,7 @@ return {
 				cleanup_delay_ms = 0,
 				keymaps = {
 					["<C-t>"] = { "actions.refresh" },
-					['yp'] = {
+					['<C-p>'] = {
 						desc = 'Copy filepath to system clipboard',
 						callback = function()
 							require('oil.actions').copy_entry_path.callback()

@@ -1,13 +1,11 @@
 {
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
+  "fzf-lua": { "branch": "main", "commit": "47b85a25c0c0b2c20b4e75199ed01bb71e7814f5" },
   "gruvbox.nvim": { "branch": "main", "commit": "58a2cda2e953a99e2f87c12b7fb4602da4e0709c" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mason.nvim": { "branch": "main", "commit": "197f6352c276bbc2d25541dfce00ec50d1a4e88f" },
   "nvim-lspconfig": { "branch": "master", "commit": "3db16ceeea947517f0dc1404c24dcb5ab0c91d26" },
   "oil.nvim": { "branch": "master", "commit": "975a77cce3c8cb742bc1b3629f4328f5ca977dad" },
-  "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
-  "ripgrep": { "branch": "master", "commit": "4649aa9700619f94cf9c66876e9549d83420e16c" },
-  "snake.nvim": { "branch": "main", "commit": "c0bc2cfb0822f2aa8649baa0bf66910efc7b03f3" },
-  "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" }
+  "snake.nvim": { "branch": "main", "commit": "c0bc2cfb0822f2aa8649baa0bf66910efc7b03f3" }
 }
