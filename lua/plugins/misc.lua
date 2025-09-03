@@ -1,31 +1,71 @@
 return {
-	-- {
-	-- 	'mrcjkb/haskell-tools.nvim',
-	-- 	-- dependencies = { 'ndmitchell/hoogle' },
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		local ht = require('haskell-tools')
-	-- 		local bufnr = vim.api.nvim_get_current_buf()
-	-- 		local opts = { noremap = true, silent = true, buffer = bufnr, }
-	--
-	-- 		-- haskell-language-server relies heavily on codeLenses,
-	-- 		-- so auto-refresh (see advanced configuration) is enabled by default
-	-- 		vim.keymap.set('n', '<leader>mc', vim.lsp.codelens.run, opts)
-	-- 		-- Hoogle search for the type signature of the definition under the cursor
-	-- 		vim.keymap.set('n', '<leader>mh', ht.hoogle.hoogle_signature, opts)
-	-- 		-- Evaluate all code snippets
-	-- 		vim.keymap.set('n', '<leader>ms', ht.lsp.buf_eval_all, opts)
-	-- 		-- Toggle a GHCi repl for the current package
-	-- 		vim.keymap.set('n', '<leader>mr', ht.repl.toggle, opts)
-	-- 		-- Toggle a GHCi repl for the current buffer
-	-- 		vim.keymap.set('n', '<leader>mf', function()
-	-- 			ht.repl.toggle(vim.api.nvim_buf_get_name(0))
-	-- 		end, opts)
-	-- 		vim.keymap.set('n', '<leader>mq', ht.repl.quit, opts)
-	-- 	end
-	-- }
-	-- {
-	-- 	"m4xshen/hardtime.nvim",
-	-- 	dependencies = { "MunifTanjim/nui.nvim" },
-	-- },
+    -- {
+    --     "folke/lazydev.nvim",
+    --     ft = "lua",
+    --     opts = {
+    --         library = {
+    --             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    --         },
+    --     },
+    -- },
+    -- {
+    --     'iofq/dart.nvim',
+    --     opts = {},
+    -- },
+    -- {
+    --     "cbochs/grapple.nvim",
+    --     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    --     -- "otavioschwanck/arrow.nvim",
+    --     opts = {
+    --         -- leader_key = ';',
+    --         -- buffer_leader_key = 'm',
+    --     },
+    --     config = function()
+    --         require("grapple").setup()
+    --         -- Lua
+    --         vim.keymap.set("n", "<leader>m", require("grapple").toggle)
+    --         vim.keymap.set("n", "<leader>M", require("grapple").toggle_tags)
+    --
+    --         -- User command
+    --         vim.keymap.set("n", "<leader>1", "<cmd>Grapple select index=1<cr>")
+    --         vim.keymap.set("n", "<leader>2", "<cmd>Grapple select index=2<cr>")
+    --         vim.keymap.set("n", "<leader>3", "<cmd>Grapple select index=3<cr>")
+    --         vim.keymap.set("n", "<leader>4", "<cmd>Grapple select index=4<cr>")
+    --         vim.keymap.set("n", "<leader>5", "<cmd>Grapple select index=5<cr>")
+    --         vim.keymap.set("n", "<leader>6", "<cmd>Grapple select index=6<cr>")
+    --         vim.keymap.set("n", "<leader>7", "<cmd>Grapple select index=7<cr>")
+    --         vim.keymap.set("n", "<leader>8", "<cmd>Grapple select index=8<cr>")
+    --         vim.keymap.set("n", "<leader>9", "<cmd>Grapple select index=9<cr>")
+    --         vim.keymap.set("n", "<leader>0", "<cmd>Grapple select index=0<cr>")
+    --     end,
+    -- },
+    -- {
+    -- 	'mrcjkb/haskell-tools.nvim',
+    -- 	-- dependencies = { 'ndmitchell/hoogle' },
+    -- 	lazy = false,
+    -- 	config = function()
+    -- 		local ht = require('haskell-tools')
+    -- 		local bufnr = vim.api.nvim_get_current_buf()
+    -- 		local opts = { noremap = true, silent = true, buffer = bufnr, }
+    --
+    -- 		-- haskell-language-server relies heavily on codeLenses,
+    -- 		-- so auto-refresh (see advanced configuration) is enabled by default
+    -- 		vim.keymap.set('n', '<leader>mc', vim.lsp.codelens.run, opts)
+    -- 		-- Hoogle search for the type signature of the definition under the cursor
+    -- 		vim.keymap.set('n', '<leader>mh', ht.hoogle.hoogle_signature, opts)
+    -- 		-- Evaluate all code snippets
+    -- 		vim.keymap.set('n', '<leader>ms', ht.lsp.buf_eval_all, opts)
+    -- 		-- Toggle a GHCi repl for the current package
+    -- 		vim.keymap.set('n', '<leader>mr', ht.repl.toggle, opts)
+    -- 		-- Toggle a GHCi repl for the current buffer
+    -- 		vim.keymap.set('n', '<leader>mf', function()
+    -- 			ht.repl.toggle(vim.api.nvim_buf_get_name(0))
+    -- 		end, opts)
+    -- 		vim.keymap.set('n', '<leader>mq', ht.repl.quit, opts)
+    -- 	end
+    -- }
+    -- {
+    -- 	"m4xshen/hardtime.nvim",
+    -- 	dependencies = { "MunifTanjim/nui.nvim" },
+    -- },
 }

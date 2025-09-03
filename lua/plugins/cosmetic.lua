@@ -7,11 +7,4 @@ return {
 			vim.cmd('colorscheme gruvbox')
 		end,
 	},
-    -- { 'catppuccin/nvim', },
-    -- { 'folke/tokyonight.nvim', },
-    -- { 'EdenEast/nightfox.nvim', },
-    -- { 'rose-pine/neovim', },
-    -- { 'navarasu/onedark.nvim', },
-    -- { 'savq/melange-nvim', },
-    -- { 'vague2k/vague.nvim', },
 }

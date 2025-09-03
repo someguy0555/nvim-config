@@ -1,7 +1,7 @@
 return {
     {
         'mason-org/mason.nvim',
-        opts = {}
+        opts = {},
     },
     { 'neovim/nvim-lspconfig' },
     {
@@ -49,7 +49,7 @@ return {
                 },
                 menu = {
                     auto_show = true,
-                    draw = { columns = { { "kind_icon", "kind", gap = 1 }, { "label", "label_description", gap = 1 }, {"source_name"} } },
+                    draw = { columns = { { "kind_icon", "kind", gap = 1 }, { "label", "label_description", gap = 1 }, { "source_name" } } },
                     -- draw = { columns = { { "kind_icon", "kind", gap = 1 }, { "label", gap = 1 }, } },
                 },
             },
@@ -64,6 +64,15 @@ return {
             -- snippets = { preset = 'luasnip' },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
+                -- default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+                -- providers = {
+                --     lazydev = {
+                --         name = "LazyDev",
+                --         module = "lazydev.integrations.blink",
+                --         -- make lazydev completions top priority (see `:h blink.cmp`)
+                --         score_offset = 100,
+                --     },
+                -- },
             },
         },
         opts_extend = { "sources.default" },

@@ -17,114 +17,74 @@ vim.o.smartindent = true
 vim.o.grepprg = "rg --vimgrep"
 vim.o.grepformat = "%f:%l:%c:%m"
 
-local map = vim.keymap.set
 -- Map
-map('n', '<leader>o', ':update<CR>:source<CR>')
-map('n', '<leader>w', ':write<CR>')
-map('n', '<leader>q', ':quit<CR>')
-map({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
-map({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>')
-map('n', '<leader><leader>', ':nohlsearch<CR>')
-map('n', '<leader>di', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
-map('n', '<leader>dq', vim.diagnostic.setqflist)
-map('n', '<leader>dQ', vim.diagnostic.setloclist)
-map('n', '<leader>lq', ':copen<CR>')
-map('n', '<leader>lQ', ':lopen<CR>')
-map('n', '<leader>lf', vim.lsp.buf.format)
-map("n", "<leader>ln", vim.lsp.buf.rename)
-map('n', '<leader>ld', vim.lsp.buf.definition)
-map('n', '<leader>li', vim.lsp.buf.implementation)
-map('n', '<leader>lr', vim.lsp.buf.references)
-map('n', '<leader>la', vim.lsp.buf.code_action)
-map('n', '<leader>lh', vim.lsp.buf.hover)
-map('n', '<C-k>', ':wincmd k<CR>')
-map('n', '<C-j>', ':wincmd j<CR>')
-map('n', '<C-h>', ':wincmd h<CR>')
-map('n', '<C-l>', ':wincmd l<CR>')
-map('n', '<C-w>t', ':tabnew <CR>')
-map('n', '<C-w>c', ':tabclose <CR>')
-map('t', '<C-n>', '<C-\\><C-n>')
+vim.keymap.set('n', '<C-c>', '<Esc>')
+vim.keymap.set('n', '<leader>o', ':update<CR>:source<CR>')
+vim.keymap.set('n', '<leader>w', ':write<CR>')
+vim.keymap.set('n', '<leader>q', ':quit<CR>')
+vim.keymap.set('n', '<C-z>', ':quit!<CR>')
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y')
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d')
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>p', '"+p')
+vim.keymap.set('n', '<leader><leader>', ':nohlsearch<CR>')
+vim.keymap.set('n', '<leader>di', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end)
+vim.keymap.set('n', '<leader>dq', vim.diagnostic.setqflist)
+vim.keymap.set('n', '<leader>dQ', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>lq', ':copen<CR>')
+vim.keymap.set('n', '<leader>lQ', ':lopen<CR>')
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
+vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation)
+vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references)
+vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
+vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover)
+vim.keymap.set('n', '<leader>lt', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
+vim.keymap.set('n', '<C-w>t', ':tabnew %<CR>')
+vim.keymap.set('n', '<C-w>c', ':tabclose <CR>')
+vim.keymap.set('t', '<C-n>', '<C-\\><C-n>')
+
+-- Workspaces
+vim.keymap.set('n', '<leader>a1', 'mA')
+vim.keymap.set('n', '<leader>a2', 'mB')
+vim.keymap.set('n', '<leader>a3', 'mC')
+vim.keymap.set('n', '<leader>a4', 'mD')
+vim.keymap.set('n', '<leader>a5', 'mE')
+vim.keymap.set('n', '<leader>a6', 'mF')
+vim.keymap.set('n', '<leader>a7', 'mG')
+vim.keymap.set('n', '<leader>a8', 'mH')
+vim.keymap.set('n', '<leader>a9', 'mI')
+vim.keymap.set('n', '<leader>a0', 'mJ')
+vim.keymap.set('n', '<leader>1', '`A')
+vim.keymap.set('n', '<leader>2', '`B')
+vim.keymap.set('n', '<leader>3', '`C')
+vim.keymap.set('n', '<leader>4', '`D')
+vim.keymap.set('n', '<leader>5', '`E')
+vim.keymap.set('n', '<leader>6', '`F')
+vim.keymap.set('n', '<leader>7', '`G')
+vim.keymap.set('n', '<leader>8', '`H')
+vim.keymap.set('n', '<leader>9', '`I')
+vim.keymap.set('n', '<leader>0', '`J')
 
 -- Remap
-map('n', '<C-d>', '<C-d>zz', { silent = true })
-map('n', '<C-u>', '<C-u>zz', { silent = true })
-map('v', '<', '<gv', { silent = true })
-map('v', '>', '>gv', { silent = true })
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set('v', '<', '<gv', { silent = true })
+vim.keymap.set('v', '>', '>gv', { silent = true })
 
 vim.diagnostic.config({
-    virtual_text = {
-        prefix = "●",
-        source = "if_many",
-    },
+    virtual_text = { prefix = "●", source = "if_many", },
     underline = true,
     update_in_insert = false,
     severity_sort = true,
-    float = {
-        border = "rounded",
-    },
+    float = { border = "rounded", },
 })
 
-Custom = {}
-Custom.attached_lsps = {}
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(ev)
-        -- vim.print("Attach!")
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client == nil then return end
-        for _, lsp in ipairs(Custom.attached_lsps) do
-            if lsp == client then return end
-        end
-        table.insert(Custom.attached_lsps, client)
-    end
-})
-vim.api.nvim_create_autocmd('LspDetach', {
-    callback = function(args)
-        -- vim.print("Detach!")
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client == nil then return end
-        for index, lsp in ipairs(Custom.attached_lsps) do
-            if lsp == client then
-                table.remove(Custom.attached_lsps, index)
-                return
-            end
-        end
-    end,
-})
-function Custom.get_attached_lsps()
-    local lsp_strs = {}
-    for index, lsp in ipairs(Custom.attached_lsps) do
-        lsp_strs[index] = lsp.name
-        -- Attach additional info:
-        -- ...
-    end
-    if #lsp_strs > 0 then return '{ ' .. table.concat(lsp_strs, ', ') .. ' }' end
-    return ''
-end
-function Custom.get_cursor_rows_columns_and_percentage_of_screen_scrolled()
-    local cur = vim.api.nvim_win_get_cursor(0)
-    local row, col = cur[1], cur[2]
-    return tostring(row) ..
-        ', ' .. tostring(col) .. '    ' .. tostring(math.floor(row / vim.api.nvim_buf_line_count(0) * 100)) .. '%'
-end
-function Custom.statusline()
-    local parts = {
-        -- [[%< %{luaeval("vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win()))")} %=]],
-        [[%< %{luaeval("vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(vim.api.nvim_get_current_win())) .. '    ' .. Custom.get_attached_lsps()")} %=]],
-        [[%< %{luaeval("Custom.get_cursor_rows_columns_and_percentage_of_screen_scrolled() .. '    '")}]],
-    }
-    return table.concat(parts)
-end
-vim.o.statusline = '%!v:lua.Custom.statusline()'
-
-vim.api.nvim_create_autocmd('Filetype', {
-    pattern = { 'c', 'cpp', 'h', 'hpp' },
-    callback = function()
-        vim.bo.commentstring = '//%s'
-    end,
-    group = comment_augroup
-})
-
-vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls' })
+vim.lsp.enable({ 'lua_ls', 'clangd', 'omnisharp', 'hls', 'markdown_oxide' , 'pyright' })
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -144,21 +104,83 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.maplocalleader = "\\"
 
 require("lazy").setup({
-    defaults = {
-        version = '*',
-    },
-    spec = {
-        { import = "plugins" },
-    },
+    defaults = { version = '*', },
+    spec = { { import = "plugins" }, },
     ui = { border = "single", },
     install = { colorscheme = { "gruvbox" } },
-    checker = {
-        notify = false,
-        enabled = false,
-    },
+    checker = { notify = false, enabled = false, },
+})
+-- vim.cmd('colorscheme quiet')
+
+---Show attached LSP clients in `[name1, name2]` format.
+---Long server names will be modified. For example, `lua-language-server` will be shorten to `lua-ls`
+---Returns an empty string if there aren't any attached LSP clients.
+---@return string
+local function lsp_status()
+    local attached_clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #attached_clients == 0 then
+        return ""
+    end
+    local names = vim.iter(attached_clients)
+        :map(function(client)
+            local name = client.name:gsub("language.server", "ls")
+            return name
+        end)
+        :totable()
+    return "{ " .. table.concat(names, ", ") .. " }"
+end
+local function get_cur_pos_percentage()
+    local cur = vim.api.nvim_win_get_cursor(0)
+    local row = cur[1]
+    return tostring(math.floor(row / vim.api.nvim_buf_line_count(0) * 100)) .. '%'
+end
+function _G.statusline()
+    return table.concat({
+        "%f",
+        "%h%w%m%r",
+        lsp_status(),
+        "%=",
+        " %-14(%l,%c%V%)",
+        -- "%P    ",
+        get_cur_pos_percentage() .. '%',
+        "    ",
+    }, "   ")
+end
+vim.o.statusline = "%{%v:lua._G.statusline()%}"
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = vim.api.nvim_create_augroup("HelpReplaceWindow", { clear = true }),
+    callback = function()
+        if vim.bo.filetype == "help" and vim.b.already_opened == nil then
+            -- remember we already opened this buffer
+            vim.b.already_opened = true
+
+            -- close the original window
+            local original_win = vim.fn.win_getid(vim.fn.winnr('#'))
+            local help_win = vim.api.nvim_get_current_win()
+            if original_win ~= help_win then
+                vim.api.nvim_win_close(original_win, false)
+            end
+            vim.bo.buflisted = true
+        end
+    end,
 })
 
--- vim.cmd('colorscheme quiet')
+vim.api.nvim_create_autocmd('Filetype', {
+    pattern = { 'c', 'cpp', 'h', 'hpp' },
+    callback = function() vim.bo.commentstring = '//%s' end,
+    group = comment_augroup
+})
+
+function NoInterruptions()
+    vim.cmd('set signcolumn=no')
+    vim.cmd('set norelativenumber')
+    vim.cmd('set nonumber')
+    vim.cmd('set laststatus=4')
+    vim.cmd('set laststatus=0')
+    vim.cmd('set statusline=""')
+    vim.cmd('set cmdheight=0')
+end
 
 -- -- local dap = require("dap")
 -- -- local dapui = require("dapui")
